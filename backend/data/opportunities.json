@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Mastercard Foundation Scholarship",
+        "category": "Scholarship",
+        "organization": "Mastercard Foundation",
+        "country": "Nigeria",
+        "verified": true
+    },
+    {
+        "title": "Google Software Internship",
+        "category": "Internship",
+        "organization": "Google",
+        "country": "Remote",
+        "verified": true
+    },
+    {
+        "title": "MTN Graduate Programme",
+        "category": "Graduate Job",
+        "organization": "MTN",
+        "country": "Nigeria",
+        "verified": false
+    },
+    {
+        "title": "OpenAI AI Scholarship",
+        "category": "Scholarship",
+        "organization": "OpenAI",
+        "country": "Global",
+        "verified": false
+    }
+]

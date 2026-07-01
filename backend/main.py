@@ -1,34 +1,54 @@
-print("=" * 50)
-print("          NextStep Backend v0.3.0")
-print("=" * 50)
+import json
+import os
 
-opportunities = [
-    {
-        "title": "Mastercard Foundation Scholarship",
-        "category": "Scholarship",
-        "organization": "Mastercard Foundation",
-        "country": "Nigeria",
-        "verified": True
-    },
-    {
-        "title": "Google Software Internship",
-        "category": "Internship",
-        "organization": "Google",
-        "country": "Remote",
-        "verified": True
-    },
-    {
-        "title": "MTN Graduate Programme",
-        "category": "Graduate Job",
-        "organization": "MTN",
-        "country": "Nigeria",
-        "verified": False
-    }
-]
+DATA_FILE = "data/opportunities.json"
+
+def load_opportunities():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as file:
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
+    return []
+
+def save_opportunities(opportunities):
+    with open(DATA_FILE, "w") as file:
+        json.dump(opportunities, file, indent=4)
+
+opportunities = load_opportunities()
+
+if len(opportunities) == 0:
+    opportunities = [
+        {
+            "title": "Mastercard Foundation Scholarship",
+            "category": "Scholarship",
+            "organization": "Mastercard Foundation",
+            "country": "Nigeria",
+            "verified": True
+        },
+        {
+            "title": "Google Software Internship",
+            "category": "Internship",
+            "organization": "Google",
+            "country": "Remote",
+            "verified": True
+        },
+        {
+            "title": "MTN Graduate Programme",
+            "category": "Graduate Job",
+            "organization": "MTN",
+            "country": "Nigeria",
+            "verified": False
+        }
+    ]
 
 while True:
-    print("\n========== NextStep ==========")
-    print("1. View Opportunities")
+    print("=" * 50)
+    print("          NextStep Backend v0.4.0")
+    print("=" * 50)
+
+    print("\n1. View Opportunities")
     print("2. Search by Category")
     print("3. Add Opportunity")
     print("4. Exit")
@@ -82,6 +102,7 @@ while True:
         }
 
         opportunities.append(new_opportunity)
+        save_opportunities(opportunities)
 
         print("\n✅ Opportunity added successfully!")
 
@@ -90,5 +111,4 @@ while True:
         break
 
     else:
-        print("\n❌ Invalid option. Try again.")
-
+        print("\n❌ Invalid option.")
